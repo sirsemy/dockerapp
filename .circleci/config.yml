@@ -26,11 +26,11 @@ jobs:
 #          password: $DOCKER_HUB_PWD
 #    steps:
 #      - checkout
-      - run: docker logout |
-            docker login -u=$DOCKER_HUB_USER_ID -p=$DOCKER_HUB_PWD |
-            docker tag dockerapp_dockerapp $DOCKER_HUB_USER_ID/dockerapp:$CIRCLE_SHA1 |
-            docker tag dockerapp_dockerapp $DOCKER_HUB_USER_ID/dockerapp:latest |
-            docker push $DOCKER_HUB_USER_ID/dockerapp:$CIRCLE_SHA1 |
+      - run: |
+            docker login -u=$DOCKER_HUB_USER_ID -p=$DOCKER_HUB_PWD
+            docker tag dockerapp_dockerapp $DOCKER_HUB_USER_ID/dockerapp:$CIRCLE_SHA1
+            docker tag dockerapp_dockerapp $DOCKER_HUB_USER_ID/dockerapp:latest
+            docker push $DOCKER_HUB_USER_ID/dockerapp:$CIRCLE_SHA1
             docker push $DOCKER_HUB_USER_ID/dockerapp:latest
 #          name: Publish application Docker image
 #          commmand: |
